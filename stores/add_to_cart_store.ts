@@ -16,6 +16,7 @@ interface AddToCartState {
   addToCartItem: (newItem: CartItem, category: string) => void;
   addQuantity: (itemToUpdate: number, category: string) => void;
   minusQuantity: (itemToUpdate: number, category: string) => void;
+  removeItem: (itemToUpdate: number, category: string) => void;
 }
 interface OrderTypeState {
   type: number;
@@ -72,6 +73,12 @@ export const useAddToCartStore = create<AddToCartState>()(
                     quantity: Math.max(1, item.quantity - 1),
                   }
                 : item,
+            ),
+          })),
+        removeItem: (id, category) =>
+          set((state) => ({
+            items: state.items.filter(
+              (i) => !(i.id === id && i.category === category),
             ),
           })),
       }),

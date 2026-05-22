@@ -22,10 +22,10 @@ export async function POST(req: NextRequest) {
       payment_method_types: ["card"],
       line_items: items.map((item) => ({
         price_data: {
-          currency: "usd",
+          currency: "php",
           product_data: {
             name: item.name,
-            ...(item.imageSrc && { images: [item.imageSrc] }),
+            // ...(item.imageSrc && { images: [item.imageSrc] }),
           },
           unit_amount: Math.round(item.price * 100),
         },
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
       })),
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     });
 
     return NextResponse.json({ url: session.url });
