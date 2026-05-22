@@ -2,7 +2,6 @@
 import { stripe } from "@/lib/stripe";
 import { useAddToCartStore } from "@/stores/add_to_cart_store";
 import Link from "next/link";
-import { useEffect } from "react";
 
 interface SuccessPageProps {
   searchParams: Promise<{ session_id?: string }>;
