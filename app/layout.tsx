@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <SidebarProvider>
           <SideMenu />
-          {/* <SidebarTrigger /> */}
+          <SidebarTrigger/>
           {children}
         </SidebarProvider>
       </body>
